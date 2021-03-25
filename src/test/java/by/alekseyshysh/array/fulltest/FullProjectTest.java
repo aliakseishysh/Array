@@ -4,7 +4,7 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import by.alekseyshysh.array.entity.IntArray;
-import by.alekseyshysh.array.exception.NoSuchFileException;
+import by.alekseyshysh.array.exception.NoSuchFileFoundedException;
 import by.alekseyshysh.array.service.ArrayCalculationService;
 import by.alekseyshysh.array.service.ArrayChangeElementService;
 import by.alekseyshysh.array.service.ArrayReadService;
@@ -13,7 +13,7 @@ import by.alekseyshysh.array.service.ArraySortService;
 
 public class FullProjectTest {
 	@Test
-	public void throwOrNoExceptionsFastTest() throws NoSuchFileException {
+	public void throwOrNoExceptionsFastTest() throws NoSuchFileFoundedException {
 		String[] correctLinesString = ArrayReadService.readAllCorrectLines();
 		IntArray[] intArrayArray = ArrayReadService.stringArrayToIntArrayArrayWithStream(
 							  correctLinesString);

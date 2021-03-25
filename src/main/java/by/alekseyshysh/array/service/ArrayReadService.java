@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import by.alekseyshysh.array.entity.IntArray;
-import by.alekseyshysh.array.exception.NoSuchFileException;
+import by.alekseyshysh.array.exception.NoSuchFileFoundedException;
 
 import by.alekseyshysh.array.validation.LineValidator;
 
@@ -44,13 +44,13 @@ public abstract class ArrayReadService {
 	/**
 	 * 
 	 * @return new open Stream<String> for file reading
-	 * @throws NoSuchFileException
+	 * @throws NoSuchFileFoundedException
 	 */
-	private static Stream<String> createFileStream() throws NoSuchFileException {	   
+	private static Stream<String> createFileStream() throws NoSuchFileFoundedException {	   
 		Stream<String> linesStream = null;
 		if (Files.notExists(createFilePath())) {
 			logger.log(Level.FATAL, "NoSuchFileException");
-			throw new NoSuchFileException();
+			throw new NoSuchFileFoundedException();
 		}
 		/* TODO i dont't understand why i should handle this, 
 		 * because i checked it few lines before; 
@@ -70,9 +70,9 @@ public abstract class ArrayReadService {
 	 * 
 	 * @param numberOfCorrectLines number of correct lines to read from file
 	 * @return String[] with correct lines after validation
-	 * @throws NoSuchFileException
+	 * @throws NoSuchFileFoundedException
 	 */
-	public static String[] readCorrectLines(int numberOfCorrectLines) throws NoSuchFileException {
+	public static String[] readCorrectLines(int numberOfCorrectLines) throws NoSuchFileFoundedException {
 		Stream<String> linesStream = createFileStream();
 		ArrayList<String> arrayList = new ArrayList<String>();
 		Iterator<String> streamIterator = linesStream.iterator();
@@ -100,9 +100,9 @@ public abstract class ArrayReadService {
 	/**
 	 * Method to read all correct lines in stream
 	 * @see #readCorrectLines()
-	 * @throws NoSuchFileException
+	 * @throws NoSuchFileFoundedException
 	 */
-	public static String[] readAllCorrectLines() throws NoSuchFileException {
+	public static String[] readAllCorrectLines() throws NoSuchFileFoundedException {
 		Stream<String> linesStream = createFileStream();
 		int numberOfLines = (int) linesStream.count();
 		linesStream.close();

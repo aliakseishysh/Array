@@ -7,12 +7,12 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import by.alekseyshysh.array.entity.IntArray;
-import by.alekseyshysh.array.exception.NoSuchFileException;
+import by.alekseyshysh.array.exception.NoSuchFileFoundedException;
 
 public class ReadAllStringsTest {
 
 	@Test
-	public void readAllStringsTest() throws IOException, NoSuchFileException {
+	public void readAllStringsTest() throws IOException, NoSuchFileFoundedException {
 		String[] actual = ArrayReadService.readAllCorrectLines();
 		String[] expected = new String[] {"1,2,3,4,5,6,7,8",
 										  "-1,-2,-3,-4,-5,-6,-7,-8",

@@ -7,12 +7,12 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import by.alekseyshysh.array.entity.IntArray;
-import by.alekseyshysh.array.exception.NoSuchFileException;
+import by.alekseyshysh.array.exception.NoSuchFileFoundedException;
 
 public class StringArrayToIntArrayArrayTest {
 
 	@Test
-	public void readAllStringsTest() throws IOException, NoSuchFileException {
+	public void readAllStringsTest() throws IOException, NoSuchFileFoundedException {
 		IntArray[] actual = ArrayReadService.stringArrayToIntArrayArray(
 				ArrayReadService.readAllCorrectLines());
 		IntArray[] expected = new IntArray[3];
@@ -26,7 +26,7 @@ public class StringArrayToIntArrayArrayTest {
 	}
 	
 	@Test
-	public void readAllStringsTestWithStream() throws IOException, NoSuchFileException {
+	public void readAllStringsTestWithStream() throws IOException, NoSuchFileFoundedException {
 		IntArray[] actual = ArrayReadService.stringArrayToIntArrayArrayWithStream(
 				ArrayReadService.readAllCorrectLines());
 		IntArray[] expected = new IntArray[3];
