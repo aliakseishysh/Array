@@ -35,10 +35,14 @@ class QuickSort {
 	    return i+1;
 	}
 	
-	// TODO need to understand this code
+	/* TODO need to understand this code and rewrite by myself with all rules
+	 * 
+	 */
 	private static Function<Integer, Predicate<Integer>> smallerThan = x -> y -> y < x;
     public static List<Integer> quickSortWithStream(List<Integer> list){
-        if(list.isEmpty()) return new ArrayList<>();
+        if(list.isEmpty()) {
+        	return new ArrayList<>();
+        }
         return Stream.concat(Stream.concat(
                 quickSortWithStream(list.stream().skip(1).filter(smallerThan.apply(list.get(0)))
                 		.collect(Collectors.toList())).stream(), Stream.of(list.get(0))),

@@ -4,11 +4,11 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import by.alekseyshysh.array.entity.IntArray;
-import by.alekseyshysh.array.exception.IndexOutOfRangeException;
+import by.alekseyshysh.array.exception.IndexOutOfRangeFoundedException;
 
 public class SetElementTest {
 	@Test
-	public void setElementPositiveValueTest() throws IndexOutOfRangeException {
+	public void setElementPositiveValueTest() throws IndexOutOfRangeFoundedException {
 		IntArray intArray = new IntArray(new int[] {1,2,3,4,5,6,7,8});
 		int expected = 99;
 		ArrayChangeElementService.setElement(intArray, 2, 99);
@@ -16,7 +16,7 @@ public class SetElementTest {
 		AssertJUnit.assertEquals(expected, actual);
 	}
 	@Test
-	public void setElementNegativeValueTest() throws IndexOutOfRangeException {
+	public void setElementNegativeValueTest() throws IndexOutOfRangeFoundedException {
 		IntArray intArray = new IntArray(new int[] {1,2,3,4,5,6,7,8});
 		boolean expected = true;
 		boolean actual = ArrayChangeElementService.setElement(intArray, 2, -99);
