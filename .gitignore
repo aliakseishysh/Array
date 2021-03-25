@@ -2,4 +2,7 @@
 /lib/
 /logs/
 /test-output/
-/testng.xml
+/.settings
+testng.xml
+.classpath
+.project
