@@ -1,0 +1,5 @@
+/bin/
+/lib/
+/logs/
+/test-output/
+/testng.xml
