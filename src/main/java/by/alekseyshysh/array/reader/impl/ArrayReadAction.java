@@ -33,7 +33,7 @@ public class ArrayReadAction implements ArrayReadInterface {
 
 	public void pathCheck(Path path) {
 		if (Files.notExists(path)) {
-			logger.log(Level.ERROR, "NoSuchFileException");
+			logger.log(Level.ERROR, "No such file");
 		}
 	}
 	
@@ -49,6 +49,7 @@ public class ArrayReadAction implements ArrayReadInterface {
 		pathCheck(path);
 		return path;
 	}
+	
 
 	/**
 	 * Method to read specific number of correct lines or LESS if end of lines
@@ -71,10 +72,12 @@ public class ArrayReadAction implements ArrayReadInterface {
 				if (lineValidator.validate(nextLine)) {
 					arrayList.add(nextLine);
 					currentNumberOfCorrectLines++;
+				} else {
+					logger.log(Level.INFO, "Line: {0} is not correct", nextLine);
 				}
 			}
 		} catch (IOException e) {
-			rootLogger.log(Level.ERROR, e.getClass().getSimpleName());
+			rootLogger.log(Level.ERROR, "Problem with file reading");
 		}
 		return arrayList.toArray(new String[arrayList.size()]);
 	}
@@ -93,10 +96,12 @@ public class ArrayReadAction implements ArrayReadInterface {
 				String nextLine = iterator.next();
 				if (lineValidator.validate(nextLine)) {
 					arrayList.add(nextLine);
+				} else {
+					logger.log(Level.INFO, "Line: {0} is not correct", nextLine);
 				}
 			}
 		} catch (IOException e) {
-			rootLogger.log(Level.ERROR, e.getClass().getSimpleName());
+			rootLogger.log(Level.ERROR, "Problem with file reading");
 		}
 		return arrayList.toArray(new String[arrayList.size()]);
 	}

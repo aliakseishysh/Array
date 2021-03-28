@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration status="INFO">
 
 	<Properties>
 		<property name="pattern_console">
@@ -30,12 +30,12 @@
     </Appenders>
 
     <Loggers>
-    	<Logger name ="by.alekseyshysh.array.service.ArrayReadService" level="DEBUG">
+    	<Logger name ="by.alekseyshysh.array.service.ArrayReadService" level="INFO">
     		<AppenderRef ref="Console"/>
     	</Logger>
         <Root level="info">
-            <AppenderRef ref="Console" level = "fatal"/>
-            <AppenderRef ref="LogFile" level = "debug"/>
+            <AppenderRef ref="Console" level = "info"/>
+            <AppenderRef ref="LogFile" level = "info"/>
         </Root>
     </Loggers>
     
