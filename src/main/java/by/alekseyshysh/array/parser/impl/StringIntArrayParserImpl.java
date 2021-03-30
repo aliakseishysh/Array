@@ -2,11 +2,12 @@ package by.alekseyshysh.array.parser.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import by.alekseyshysh.array.entity.IntArray;
-import by.alekseyshysh.array.parser.ParserInterface;
+import by.alekseyshysh.array.parser.StringIntArrayParser;
 
-public class Parser implements ParserInterface {
+public class StringIntArrayParserImpl implements StringIntArrayParser {
 
 	/**
 	 * Converting String[] to ArrayList<int[]>
@@ -14,7 +15,7 @@ public class Parser implements ParserInterface {
 	 * @param correctLines lines received after validation
 	 * @return ArrayList<int[]> object
 	 */
-	public ArrayList<int[]> parseWithStream(String[] correctLines) {
+	public List<int[]> parseWithStream(String[] correctLines) {
 		int[] resultArray;
 		var resultList = new ArrayList<int[]>();
 		for (String correctLine: correctLines) {
@@ -32,7 +33,7 @@ public class Parser implements ParserInterface {
 	 * @param correctLines lines received after validation
 	 * @return ArrayList<int[]> object
 	 */
-	public ArrayList<int[]> parse(String[] correctLines) {
+	public List<int[]> parse(String[] correctLines) {
 		int[] resultArray;
 		var resultList = new ArrayList<int[]>();
 		for (String correctLine: correctLines) {
@@ -40,7 +41,7 @@ public class Parser implements ParserInterface {
 			resultArray = new int[stringParseResult.length];
 			for (int j = 0; j < stringParseResult.length; j++) {
 				Integer parseValue = Integer.parseInt(stringParseResult[j]);
-				resultArray[j] = Integer.valueOf(parseValue);
+				resultArray[j] = parseValue;
 			}
 			resultList.add(resultArray);
 		}

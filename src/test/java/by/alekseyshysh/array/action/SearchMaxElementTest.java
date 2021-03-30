@@ -3,12 +3,12 @@ package by.alekseyshysh.array.action;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import by.alekseyshysh.array.action.impl.ArraySearchAction;
+import by.alekseyshysh.array.action.impl.ArraySearchActionImpl;
 import by.alekseyshysh.array.entity.IntArray;
 
 public class SearchMaxElementTest {
 	
-	private ArraySearchInterface arraySearch = new ArraySearchAction();
+	private ArraySearch arraySearch = new ArraySearchActionImpl();
 	
 	@Test
 	public void searchMaxElementPositiveValuesTest() {

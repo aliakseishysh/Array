@@ -2,7 +2,7 @@ package by.alekseyshysh.array.action.impl;
 
 import java.util.stream.IntStream;
 
-import by.alekseyshysh.array.action.ArrayCalculationInterface;
+import by.alekseyshysh.array.action.ArrayCalculation;
 import by.alekseyshysh.array.entity.IntArray;
 
 /**
@@ -12,7 +12,7 @@ import by.alekseyshysh.array.entity.IntArray;
  * @author AlekseyShysh
  *
  */
-public class ArrayCalculationAction implements ArrayCalculationInterface {
+public class ArrayCalculationActionImpl implements ArrayCalculation {
 	
 	public int calculateSumWithStream(IntArray intArray) {
 		int[] elements = intArray.getElements();

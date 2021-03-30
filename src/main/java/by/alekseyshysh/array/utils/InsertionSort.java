@@ -1,6 +1,6 @@
 package by.alekseyshysh.array.utils;
 
-public interface InsertionSortInterface {
+public interface InsertionSort {
 	
 	public int[] insertionSortImperative(int[] arrayToSort);
 

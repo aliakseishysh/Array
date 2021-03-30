@@ -3,12 +3,12 @@ package by.alekseyshysh.array.action;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import by.alekseyshysh.array.action.impl.ArraySortAction;
+import by.alekseyshysh.array.action.impl.ArraySortActionImpl;
 import by.alekseyshysh.array.entity.IntArray;
 
 public class InsertionSortTest {
 	
-	private ArraySortInterface arraySort = new ArraySortAction();
+	private ArraySort arraySort = new ArraySortActionImpl();
 
 	@Test
 	public void insertionSortImperativePositiveValuesTest() {

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import by.alekseyshysh.array.exception.ArrayException;
+
 /**
  * 
  * @author AlekseyShysh
@@ -23,11 +25,17 @@ public class IntArray {
 		this.elements = Arrays.copyOf(elements, elements.length);
 	}
 	
-	public int getElement(int elementNumber) {
-		return elements[elementNumber];
+	public int getElement(int index) throws ArrayException {
+		if (index < 0 || index >= elements.length) {
+			throw new ArrayException(IntArray.class.getName() + ": index out of elements bounds" );
+		}
+		return elements[index];
 	}
 	
-	public void setElement(int index, int element) {
+	public void setElement(int index, int element) throws ArrayException {
+		if (index < 0 || index >= elements.length) {
+			throw new ArrayException(IntArray.class.getName() + ": index out of elements bounds" );
+		}
 		elements[index] = element;
 	}
 	
@@ -45,7 +53,6 @@ public class IntArray {
 		this.elements = Arrays.copyOf(elements, elements.length);
 	}
 	
-	// symmetry rule not violated here, test in IntArrayTest
 	@Override
 	public boolean equals(Object object) {
 		if (object == this) {
@@ -59,7 +66,7 @@ public class IntArray {
 	}
 	
 	public List<Integer> toIntegerList() {
-		List<Integer> list = new ArrayList<Integer>(elements.length);
+		List<Integer> list = new ArrayList<>(elements.length);
 		for (int element: elements) {
 			list.add(Integer.valueOf(element));
 		}

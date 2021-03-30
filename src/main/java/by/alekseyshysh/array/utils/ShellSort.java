@@ -1,6 +1,6 @@
 package by.alekseyshysh.array.utils;
 
-public interface ShellSortInterface {
+public interface ShellSort {
 
 	public int[] shellSort(int arrayToSort[]);
 }

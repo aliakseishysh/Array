@@ -3,12 +3,12 @@ package by.alekseyshysh.array.action;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import by.alekseyshysh.array.action.impl.ArrayCalculationAction;
+import by.alekseyshysh.array.action.impl.ArrayCalculationActionImpl;
 import by.alekseyshysh.array.entity.IntArray;
 
 public class CalculatePositiveElementsCountTest {
 	
-	private ArrayCalculationInterface arrayCalculation = new ArrayCalculationAction();
+	private ArrayCalculation arrayCalculation = new ArrayCalculationActionImpl();
 	
 	@Test
 	public void calculatePositiveElementsCountPositiveValuesTest() {

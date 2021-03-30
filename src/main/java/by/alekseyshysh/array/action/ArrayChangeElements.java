@@ -4,7 +4,7 @@ import java.util.function.IntPredicate;
 
 import by.alekseyshysh.array.entity.IntArray;
 
-public interface ArrayChangeElementsByConditionInterface {
+public interface ArrayChangeElements {
 
 	public void changeAllByConditionWithStream(IntPredicate predicate, IntArray intArray, int changeTo);
 	

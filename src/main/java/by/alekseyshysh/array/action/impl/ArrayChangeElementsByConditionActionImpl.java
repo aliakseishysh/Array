@@ -4,7 +4,7 @@ import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-import by.alekseyshysh.array.action.ArrayChangeElementsByConditionInterface;
+import by.alekseyshysh.array.action.ArrayChangeElements;
 import by.alekseyshysh.array.entity.IntArray;
 
 /**
@@ -12,7 +12,7 @@ import by.alekseyshysh.array.entity.IntArray;
  * @author AlekseyShysh
  *
  */
-public class ArrayChangeElementsByConditionAction implements ArrayChangeElementsByConditionInterface {
+public class ArrayChangeElementsByConditionActionImpl implements ArrayChangeElements {
 	
 	public void changeAllByConditionWithStream(IntPredicate predicate, IntArray intArray, int changeTo) {
 		int[] elements = intArray.getElements();

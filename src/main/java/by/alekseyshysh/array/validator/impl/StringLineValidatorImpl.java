@@ -3,9 +3,9 @@ package by.alekseyshysh.array.validator.impl;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import by.alekseyshysh.array.validator.LineValidatorInterface;
+import by.alekseyshysh.array.validator.StringLineValidator;
 
-public class LineValidator implements LineValidatorInterface {
+public class StringLineValidatorImpl implements StringLineValidator {
 
 	public boolean validate(String line) {
 		Pattern pattern = Pattern.compile("^-?\\d{1,10}(,-?\\d{1,10})*$");

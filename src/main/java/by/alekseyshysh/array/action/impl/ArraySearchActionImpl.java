@@ -2,7 +2,7 @@ package by.alekseyshysh.array.action.impl;
 
 import java.util.stream.IntStream;
 
-import by.alekseyshysh.array.action.ArraySearchInterface;
+import by.alekseyshysh.array.action.ArraySearch;
 import by.alekseyshysh.array.entity.IntArray;
 
 /**
@@ -10,7 +10,7 @@ import by.alekseyshysh.array.entity.IntArray;
  * @author AlekseyShysh
  * 
  */
-public class ArraySearchAction implements ArraySearchInterface {
+public class ArraySearchActionImpl implements ArraySearch {
 	
 	/**
 	 * Returns a maximum element of intArray with IntStream implementation

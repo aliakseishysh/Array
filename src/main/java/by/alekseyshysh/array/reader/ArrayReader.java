@@ -4,7 +4,7 @@ import java.nio.file.Path;
 
 import by.alekseyshysh.array.exception.ArrayException;
 
-public interface ArrayReadInterface {
+public interface ArrayReader {
 
 	public void pathCheck(Path path);
 	
@@ -12,6 +12,6 @@ public interface ArrayReadInterface {
 
 	public String[] readAllCorrectLines(Path path);
 	
-	public Path createFilePathFromRelative() throws ArrayException;
+	public Path createFilePathFromRelative(String relativeFilePath) throws ArrayException;
 	
 }

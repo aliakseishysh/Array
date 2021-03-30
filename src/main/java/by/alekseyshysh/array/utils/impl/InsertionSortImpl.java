@@ -1,8 +1,8 @@
 package by.alekseyshysh.array.utils.impl;
 
-import by.alekseyshysh.array.utils.InsertionSortInterface;
+import by.alekseyshysh.array.utils.InsertionSort;
 
-public class InsertionSort implements InsertionSortInterface {
+public class InsertionSortImpl implements InsertionSort {
 
 	public int[] insertionSortImperative(int[] arrayToSort) {
 	    for (int i = 1; i < arrayToSort.length; i++) { 

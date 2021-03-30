@@ -1,8 +1,8 @@
 package by.alekseyshysh.array.utils.impl;
 
-import by.alekseyshysh.array.utils.QuickSortInterface;
+import by.alekseyshysh.array.utils.QuickSort;
 
-public class QuickSort implements QuickSortInterface {
+public class QuickSortImpl implements QuickSort {
 	
 	public int[] quickSort(int[] array, int begin, int end) {
 	    if (begin < end) {

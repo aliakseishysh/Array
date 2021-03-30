@@ -1,8 +1,8 @@
 package by.alekseyshysh.array.utils.impl;
 
-import by.alekseyshysh.array.utils.ShellSortInterface;
+import by.alekseyshysh.array.utils.ShellSort;
 
-public class ShellSort implements ShellSortInterface {
+public class ShellSortImpl implements ShellSort {
 	
 	public int[] shellSort(int arrayToSort[]) {
 	    int n = arrayToSort.length;

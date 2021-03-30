@@ -3,12 +3,12 @@ package by.alekseyshysh.array.action;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import by.alekseyshysh.array.action.impl.ArrayChangeElementsByConditionAction;
+import by.alekseyshysh.array.action.impl.ArrayChangeElementsByConditionActionImpl;
 import by.alekseyshysh.array.entity.IntArray;
 
 public class ChangeAllByConditionTest {
 	
-	private ArrayChangeElementsByConditionInterface changeElements = new ArrayChangeElementsByConditionAction();
+	private ArrayChangeElements changeElements = new ArrayChangeElementsByConditionActionImpl();
 	
 	@Test
 	public void changeAllGreaterThenZeroTest() {

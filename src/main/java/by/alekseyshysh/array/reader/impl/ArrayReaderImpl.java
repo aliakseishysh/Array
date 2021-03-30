@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.apache.logging.log4j.Level;
@@ -16,31 +17,29 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import by.alekseyshysh.array.exception.ArrayException;
-import by.alekseyshysh.array.reader.ArrayReadInterface;
-import by.alekseyshysh.array.validator.LineValidatorInterface;
-import by.alekseyshysh.array.validator.impl.LineValidator;
+import by.alekseyshysh.array.reader.ArrayReader;
+import by.alekseyshysh.array.validator.StringLineValidator;
+import by.alekseyshysh.array.validator.impl.StringLineValidatorImpl;
 
 /**
  * 
  * @author AlekseyShysh
  *
  */
-public class ArrayReadAction implements ArrayReadInterface {
+public class ArrayReaderImpl implements ArrayReader {
 	
-	private static Logger logger = LogManager.getLogger(ArrayReadAction.class.getName());
 	private static Logger rootLogger = LogManager.getLogger();
-	private static final String ARRAYS_DATA_RELATIVE_PATH_STANDARD = "/data/data.txt";
 
 	public void pathCheck(Path path) {
 		if (Files.notExists(path)) {
-			logger.log(Level.ERROR, "No such file");
+			rootLogger.log(Level.ERROR, "No such file");
 		}
 	}
 	
-	public Path createFilePathFromRelative() throws ArrayException {
+	public Path createFilePathFromRelative(String relativeFilePath) throws ArrayException {
 		URI uri;
 		try {
-			uri = getClass().getResource(ARRAYS_DATA_RELATIVE_PATH_STANDARD).toURI();
+			uri = getClass().getResource(relativeFilePath).toURI();
 		} catch (URISyntaxException e) {
 			throw new ArrayException();
 		}
@@ -50,7 +49,12 @@ public class ArrayReadAction implements ArrayReadInterface {
 		return path;
 	}
 	
-
+	public Path createFilePathFromAbsolute(String absoluteFilePath) {
+		Path path = Paths.get(absoluteFilePath);
+		pathCheck(path);
+		return path;
+	}
+	
 	/**
 	 * Method to read specific number of correct lines or LESS if end of lines
 	 * 
@@ -60,8 +64,8 @@ public class ArrayReadAction implements ArrayReadInterface {
 	 */
 	public String[] readCorrectLines(int numberOfCorrectLines, Path path) {
 		int currentNumberOfCorrectLines = 0;
-		ArrayList<String> arrayList = new ArrayList<>();
-		LineValidatorInterface lineValidator = new LineValidator();
+		List<String> arrayList = new ArrayList<>();
+		StringLineValidator lineValidator = new StringLineValidatorImpl();
 		try (Stream<String> stream = Files.lines(path)) {
 			Iterator<String> iterator = stream.iterator();
 			while (currentNumberOfCorrectLines < numberOfCorrectLines) {
@@ -73,7 +77,7 @@ public class ArrayReadAction implements ArrayReadInterface {
 					arrayList.add(nextLine);
 					currentNumberOfCorrectLines++;
 				} else {
-					logger.log(Level.INFO, "Line: {0} is not correct", nextLine);
+					rootLogger.log(Level.INFO, "Line: {} is not correct", nextLine);
 				}
 			}
 		} catch (IOException e) {
@@ -88,8 +92,8 @@ public class ArrayReadAction implements ArrayReadInterface {
 	 * @throws ArrayNoSuchFileException
 	 */
 	public String[] readAllCorrectLines(Path path) {
-		LineValidatorInterface lineValidator = new LineValidator();
-		ArrayList<String> arrayList = new ArrayList<>();
+		StringLineValidator lineValidator = new StringLineValidatorImpl();
+		List<String> arrayList = new ArrayList<>();
 		try (Stream<String> stream = Files.lines(path)) {
 			Iterator<String> iterator = stream.iterator();
 			while (iterator.hasNext()) {
@@ -97,7 +101,7 @@ public class ArrayReadAction implements ArrayReadInterface {
 				if (lineValidator.validate(nextLine)) {
 					arrayList.add(nextLine);
 				} else {
-					logger.log(Level.INFO, "Line: {0} is not correct", nextLine);
+					rootLogger.log(Level.INFO, "Line: {} is not correct", nextLine);
 				}
 			}
 		} catch (IOException e) {

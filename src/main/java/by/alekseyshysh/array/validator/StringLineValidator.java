@@ -1,6 +1,6 @@
 package by.alekseyshysh.array.validator;
 
-public interface LineValidatorInterface {
+public interface StringLineValidator {
 
 	public boolean validate(String line);
 }

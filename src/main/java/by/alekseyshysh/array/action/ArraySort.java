@@ -2,7 +2,7 @@ package by.alekseyshysh.array.action;
 
 import by.alekseyshysh.array.entity.IntArray;
 
-public interface ArraySortInterface {
+public interface ArraySort {
 
 	public IntArray quickSort(IntArray intArray);
 	

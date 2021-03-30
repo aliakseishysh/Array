@@ -2,7 +2,7 @@ package by.alekseyshysh.array.action;
 
 import by.alekseyshysh.array.entity.IntArray;
 
-public interface ArrayCalculationInterface {
+public interface ArrayCalculation {
 
 	public int calculateSumWithStream(IntArray intArray);
 	
