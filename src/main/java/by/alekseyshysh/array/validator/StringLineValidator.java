@@ -3,15 +3,15 @@ package by.alekseyshysh.array.validator;
 	import java.util.regex.Pattern;
 
 import by.alekseyshysh.array.exception.ArrayException;
-import by.alekseyshysh.array.parser.FromFileParser;
-import by.alekseyshysh.array.parser.impl.FromFileParserImpl;
+import by.alekseyshysh.array.parser.ArrayFileParser;
+import by.alekseyshysh.array.parser.impl.ArrayFileParserImpl;
 import by.alekseyshysh.array.validator.StringLineValidator;
 
 public class StringLineValidator {
 
 	private static final String ALL_INTEGER_NUMBERS = "^-?\\d(,-?\\d)*$";
 	
-	private FromFileParser parser = new FromFileParserImpl();
+	private ArrayFileParser parser = new ArrayFileParserImpl();
 	
 	public boolean validateFromFile(String line) {
 		return validateIntValues(line);

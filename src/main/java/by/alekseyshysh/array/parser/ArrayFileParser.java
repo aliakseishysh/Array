@@ -4,7 +4,7 @@ import java.util.List;
 
 import by.alekseyshysh.array.exception.ArrayException;
 
-public interface FromFileParser {
+public interface ArrayFileParser {
 
 	public List<int[]> parseStringsFromFileWithStream(String[] correctLines);
 	

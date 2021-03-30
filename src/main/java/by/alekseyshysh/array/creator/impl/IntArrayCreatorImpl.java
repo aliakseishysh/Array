@@ -9,8 +9,8 @@ import org.apache.logging.log4j.Logger;
 import by.alekseyshysh.array.creator.IntArrayCreator;
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
-import by.alekseyshysh.array.parser.FromFileParser;
-import by.alekseyshysh.array.parser.impl.FromFileParserImpl;
+import by.alekseyshysh.array.parser.ArrayFileParser;
+import by.alekseyshysh.array.parser.impl.ArrayFileParserImpl;
 import by.alekseyshysh.array.validator.ArrayValidator;
 
 // TODO run one more time and refactor
@@ -43,7 +43,7 @@ public class IntArrayCreatorImpl implements IntArrayCreator {
 	}
 	
 	public IntArray createIntArray(String arrayString) throws ArrayException {
-		FromFileParser parser = new FromFileParserImpl();
+		ArrayFileParser parser = new ArrayFileParserImpl();
 		if (arrayString == null) {
 			throw new ArrayException(IntArrayCreatorImpl.class.getName() 
 					+ ": can't create IntArray with null array");

@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import by.alekseyshysh.array.exception.ArrayException;
-import by.alekseyshysh.array.parser.FromFileParser;
+import by.alekseyshysh.array.parser.ArrayFileParser;
 
-public class FromFileParserImpl implements FromFileParser {
+public class ArrayFileParserImpl implements ArrayFileParser {
 
 	/**
 	 * Converting String[] to ArrayList<int[]>
