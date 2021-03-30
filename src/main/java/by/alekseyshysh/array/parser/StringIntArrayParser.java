@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface StringIntArrayParser {
 
-	public List<int[]> parseWithStream(String[] correctLines);
+	public List<int[]> parseStringsFromFileWithStream(String[] correctLines);
 	
-	public List<int[]> parse(String[] correctLines);
+	public List<int[]> parseStringsFromFile(String[] correctLines);
 }
