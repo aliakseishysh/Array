@@ -14,10 +14,10 @@ import by.alekseyshysh.array.utils.impl.ShellSortImpl;
 import by.alekseyshysh.array.validator.ArrayValidator;
 
 public class ArraySortActionImpl implements ArraySort {
-	
+
 	public IntArray quickSort(IntArray intArray) throws ArrayException {
 		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException("IntArray object or filed elements equals null");
+			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
 		}
 		int[] elements = intArray.getElements();
 		QuickSort quickSort = new QuickSortImpl();
@@ -25,9 +25,10 @@ public class ArraySortActionImpl implements ArraySort {
 		intArray.setElements(elements);
 		return intArray;
 	}
+
 	public IntArray shellSort(IntArray intArray) throws ArrayException {
 		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException("IntArray object or filed elements equals null");
+			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
 		}
 		int[] elements = intArray.getElements();
 		ShellSort shellSort = new ShellSortImpl();
@@ -35,9 +36,10 @@ public class ArraySortActionImpl implements ArraySort {
 		intArray.setElements(elements);
 		return intArray;
 	}
+
 	public IntArray insertionSort(IntArray intArray) throws ArrayException {
 		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException("IntArray object or filed elements equals null");
+			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
 		}
 		int[] elements = intArray.getElements();
 		InsertionSort insertionSort = new InsertionSortImpl();
@@ -45,10 +47,10 @@ public class ArraySortActionImpl implements ArraySort {
 		intArray.setElements(elements);
 		return intArray;
 	}
-	
+
 	public IntArray sortWithIntStream(IntArray intArray) throws ArrayException {
 		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException("IntArray object or filed elements equals null");
+			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
 		}
 		int[] elements = intArray.getElements();
 		elements = IntStream.of(elements).sorted().toArray();

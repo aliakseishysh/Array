@@ -14,21 +14,20 @@ import by.alekseyshysh.array.validator.ArrayValidator;
  *
  */
 public class ArrayChangeElementsByConditionActionImpl implements ArrayChangeElements {
-	
-	public void changeAllByConditionWithStream(IntPredicate predicate, IntArray intArray, int changeTo) throws ArrayException {
+
+	public void changeAllByConditionWithStream(IntPredicate predicate, IntArray intArray, int changeTo)
+			throws ArrayException {
 		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException("IntArray object or filed elements equals null");
+			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
 		}
 		int[] elements = intArray.getElements();
-		elements = IntStream.of(elements)
-	 						.map(element -> predicate.test(element) ? changeTo : element)
-	 						.toArray();
+		elements = IntStream.of(elements).map(element -> predicate.test(element) ? changeTo : element).toArray();
 		intArray.setElements(elements);
 	}
-	
+
 	public void changeAllByCondition(IntPredicate predicate, IntArray intArray, int changeTo) throws ArrayException {
 		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException("IntArray object or filed elements equals null");
+			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
 		}
 		int[] elements = intArray.getElements();
 		for (int i = 0; i < elements.length; i++) {
@@ -36,22 +35,7 @@ public class ArrayChangeElementsByConditionActionImpl implements ArrayChangeElem
 				elements[i] = changeTo;
 			}
 		}
-		intArray.setElements(elements);		
+		intArray.setElements(elements);
 	}
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -29,9 +29,9 @@ import by.alekseyshysh.array.validator.StringLineValidator;
  *
  */
 public class ArrayReaderImpl implements ArrayReader {
-	
+
 	private static Logger rootLogger = LogManager.getLogger();
-	
+
 	public Path createFilePathFromRelative(String relativeFilePath) throws ArrayException {
 		URI uri;
 		try {
@@ -39,13 +39,14 @@ public class ArrayReaderImpl implements ArrayReader {
 		} catch (NullPointerException e) {
 			throw new ArrayException("name of the desired resource is null");
 		} catch (URISyntaxException e) {
-			throw new ArrayException("URL is not formatted strictly according toRFC2396 and cannot be converted to a URI");
+			throw new ArrayException(
+					"URL is not formatted strictly according toRFC2396 and cannot be converted to a URI");
 		}
 		String absolutePath = new File(uri).getAbsolutePath();
 		Path path;
 		try {
 			path = Paths.get(absolutePath);
-		} catch(InvalidPathException ipe) {
+		} catch (InvalidPathException ipe) {
 			throw new ArrayException("path string cannot be converted to a Path");
 		}
 		if (!ArrayValidator.validateFileExistance(path)) {
@@ -53,7 +54,7 @@ public class ArrayReaderImpl implements ArrayReader {
 		}
 		return path;
 	}
-	
+
 	public Path createFilePathFromAbsolute(String absoluteFilePath) throws ArrayException {
 		Path path = Paths.get(absoluteFilePath);
 		if (!ArrayValidator.validateFileExistance(path)) {
@@ -61,7 +62,7 @@ public class ArrayReaderImpl implements ArrayReader {
 		}
 		return path;
 	}
-	
+
 	/**
 	 * Method to read all lines in the file without validation
 	 * 
@@ -81,12 +82,12 @@ public class ArrayReaderImpl implements ArrayReader {
 		}
 		return arrayList;
 	}
-	
+
 	/**
 	 * Method to read specific number of correct lines or LESS if end of lines
 	 * 
 	 * @param numberOfCorrectLines number of correct lines to read from file
-	 * @param path to file
+	 * @param path                 to file
 	 * @return String[] with correct lines after validation
 	 * @throws ArrayNoSuchFileException
 	 */
@@ -113,9 +114,10 @@ public class ArrayReaderImpl implements ArrayReader {
 		}
 		return arrayList.toArray(new String[arrayList.size()]);
 	}
-	
+
 	/**
 	 * Method to read all correct lines in stream
+	 * 
 	 * @see #readCorrectLines()
 	 * @throws ArrayNoSuchFileException
 	 */

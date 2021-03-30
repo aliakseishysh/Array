@@ -5,18 +5,18 @@ public class ArrayException extends Exception {
 	private static final long serialVersionUID = -3303790395502061392L;
 
 	public ArrayException() {
-        super();
-    }
-	
+		super();
+	}
+
 	public ArrayException(String message) {
-        super(message);
-    }
-	
-    public ArrayException(String message, Throwable cause) {
-        super(message, cause);
-    }
-    
-    public ArrayException(Throwable cause) {
-        super(cause);
-    }
+		super(message);
+	}
+
+	public ArrayException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	public ArrayException(Throwable cause) {
+		super(cause);
+	}
 }

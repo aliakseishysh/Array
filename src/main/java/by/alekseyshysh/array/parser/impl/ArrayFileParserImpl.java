@@ -17,15 +17,13 @@ public class ArrayFileParserImpl implements ArrayFileParser {
 	 */
 	public List<int[]> parseStringsFromFileWithStream(String[] correctLines) {
 		var resultList = new ArrayList<int[]>();
-		for (String correctLine: correctLines) {
-			int[] resultArray = Arrays.stream(correctLine.split(","))
-									  .mapToInt(Integer::parseInt)
-									  .toArray();
+		for (String correctLine : correctLines) {
+			int[] resultArray = Arrays.stream(correctLine.split(",")).mapToInt(Integer::parseInt).toArray();
 			resultList.add(resultArray);
 		}
 		return resultList;
 	}
-	
+
 	/**
 	 * Converting String[] to ArrayList<int[]>
 	 * 
@@ -34,7 +32,7 @@ public class ArrayFileParserImpl implements ArrayFileParser {
 	 */
 	public List<int[]> parseStringsFromFile(String[] correctLines) {
 		var resultList = new ArrayList<int[]>();
-		for (String correctLine: correctLines) {
+		for (String correctLine : correctLines) {
 			String[] stringParseResult = correctLine.split(",");
 			int[] resultArray = new int[stringParseResult.length];
 			for (int j = 0; j < stringParseResult.length; j++) {
@@ -45,25 +43,14 @@ public class ArrayFileParserImpl implements ArrayFileParser {
 		}
 		return resultList;
 	}
-	
+
 	public int[] parseStringFromFileWithStream(String line) throws ArrayException {
 		int[] resultArray;
 		try {
-			resultArray = Arrays.stream(line.split(","))
-					  		    .mapToInt(Integer::parseInt)
-					  		    .toArray();
+			resultArray = Arrays.stream(line.split(",")).mapToInt(Integer::parseInt).toArray();
 		} catch (NumberFormatException nfe) {
 			throw new ArrayException("Can't parse number to int");
 		}
 		return resultArray;
 	}
 }
-
-
-
-
-
-
-
-
-

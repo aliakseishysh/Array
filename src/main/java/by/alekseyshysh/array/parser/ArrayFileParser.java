@@ -7,8 +7,8 @@ import by.alekseyshysh.array.exception.ArrayException;
 public interface ArrayFileParser {
 
 	public List<int[]> parseStringsFromFileWithStream(String[] correctLines);
-	
+
 	public List<int[]> parseStringsFromFile(String[] correctLines);
-	
+
 	public int[] parseStringFromFileWithStream(String line) throws ArrayException;
 }
