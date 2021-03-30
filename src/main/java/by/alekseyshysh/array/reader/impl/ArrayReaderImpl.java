@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 
 import by.alekseyshysh.array.exception.ArrayException;
 import by.alekseyshysh.array.reader.ArrayReader;
+import by.alekseyshysh.array.validator.ArrayValidator;
 import by.alekseyshysh.array.validator.StringLineValidator;
 import by.alekseyshysh.array.validator.impl.StringLineValidatorImpl;
 
@@ -29,29 +31,34 @@ import by.alekseyshysh.array.validator.impl.StringLineValidatorImpl;
 public class ArrayReaderImpl implements ArrayReader {
 	
 	private static Logger rootLogger = LogManager.getLogger();
-
-	public void pathCheck(Path path) {
-		if (Files.notExists(path)) {
-			rootLogger.log(Level.ERROR, "No such file");
-		}
-	}
 	
 	public Path createFilePathFromRelative(String relativeFilePath) throws ArrayException {
 		URI uri;
 		try {
 			uri = getClass().getResource(relativeFilePath).toURI();
+		} catch (NullPointerException e) {
+			throw new ArrayException("name of the desired resource is null");
 		} catch (URISyntaxException e) {
-			throw new ArrayException();
+			throw new ArrayException("URL is not formatted strictly according toRFC2396 and cannot be converted to a URI");
 		}
 		String absolutePath = new File(uri).getAbsolutePath();
-		Path path = Paths.get(absolutePath);
-		pathCheck(path);
+		Path path;
+		try {
+			path = Paths.get(absolutePath);
+		} catch(InvalidPathException ipe) {
+			throw new ArrayException("path string cannot be converted to a Path");
+		}
+		if (!ArrayValidator.validateFileExistance(path)) {
+			throw new ArrayException("file not exists");
+		}
 		return path;
 	}
 	
-	public Path createFilePathFromAbsolute(String absoluteFilePath) {
+	public Path createFilePathFromAbsolute(String absoluteFilePath) throws ArrayException {
 		Path path = Paths.get(absoluteFilePath);
-		pathCheck(path);
+		if (!ArrayValidator.validateFileExistance(path)) {
+			throw new ArrayException("file not exists");
+		}
 		return path;
 	}
 	
@@ -130,7 +137,4 @@ public class ArrayReaderImpl implements ArrayReader {
 		}
 		return arrayList.toArray(new String[arrayList.size()]);
 	}
-	
-	
-
 }

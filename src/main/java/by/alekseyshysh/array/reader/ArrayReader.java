@@ -6,8 +6,6 @@ import by.alekseyshysh.array.exception.ArrayException;
 
 public interface ArrayReader {
 
-	public void pathCheck(Path path);
-	
 	public String[] readCorrectLines(int numberOfCorrectLines, Path path);
 
 	public String[] readAllCorrectLines(Path path);

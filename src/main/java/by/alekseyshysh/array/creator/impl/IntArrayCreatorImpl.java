@@ -11,13 +11,14 @@ import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
 import by.alekseyshysh.array.parser.FromFileParser;
 import by.alekseyshysh.array.parser.impl.FromFileParserImpl;
+import by.alekseyshysh.array.validator.ArrayValidator;
 
+// TODO run one more time and refactor
 public class IntArrayCreatorImpl implements IntArrayCreator {
 	
 	private static final Logger logger = LogManager.getLogger();
 
 	public IntArray[] createIntArrayArray(List<int[]> arrayList) throws ArrayException {
-		
 		IntArray[] result = arrayList.stream()
 					 				 .map(array -> {
 										try {
