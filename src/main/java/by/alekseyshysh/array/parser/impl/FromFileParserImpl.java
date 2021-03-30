@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import by.alekseyshysh.array.parser.StringIntArrayParser;
+import by.alekseyshysh.array.exception.ArrayException;
+import by.alekseyshysh.array.parser.FromFileParser;
 
-public class StringIntArrayParserImpl implements StringIntArrayParser {
+public class FromFileParserImpl implements FromFileParser {
 
 	/**
 	 * Converting String[] to ArrayList<int[]>
@@ -15,12 +16,11 @@ public class StringIntArrayParserImpl implements StringIntArrayParser {
 	 * @return ArrayList<int[]> object
 	 */
 	public List<int[]> parseStringsFromFileWithStream(String[] correctLines) {
-		int[] resultArray;
 		var resultList = new ArrayList<int[]>();
 		for (String correctLine: correctLines) {
-			resultArray = Arrays.stream(correctLine.split(","))
-								.mapToInt(Integer::parseInt)
-								.toArray();
+			int[] resultArray = Arrays.stream(correctLine.split(","))
+									  .mapToInt(Integer::parseInt)
+									  .toArray();
 			resultList.add(resultArray);
 		}
 		return resultList;
@@ -33,11 +33,10 @@ public class StringIntArrayParserImpl implements StringIntArrayParser {
 	 * @return ArrayList<int[]> object
 	 */
 	public List<int[]> parseStringsFromFile(String[] correctLines) {
-		int[] resultArray;
 		var resultList = new ArrayList<int[]>();
 		for (String correctLine: correctLines) {
 			String[] stringParseResult = correctLine.split(",");
-			resultArray = new int[stringParseResult.length];
+			int[] resultArray = new int[stringParseResult.length];
 			for (int j = 0; j < stringParseResult.length; j++) {
 				Integer parseValue = Integer.parseInt(stringParseResult[j]);
 				resultArray[j] = parseValue;
@@ -45,6 +44,18 @@ public class StringIntArrayParserImpl implements StringIntArrayParser {
 			resultList.add(resultArray);
 		}
 		return resultList;
+	}
+	
+	public int[] parseStringFromFileWithStream(String line) throws ArrayException {
+		int[] resultArray;
+		try {
+			resultArray = Arrays.stream(line.split(","))
+					  		    .mapToInt(Integer::parseInt)
+					  		    .toArray();
+		} catch (NumberFormatException nfe) {
+			throw new ArrayException("Can't parse number to int");
+		}
+		return resultArray;
 	}
 }
 

@@ -56,9 +56,30 @@ public class ArrayReaderImpl implements ArrayReader {
 	}
 	
 	/**
+	 * Method to read all lines in the file without validation
+	 * 
+	 * @param path to file
+	 * @return String[] with all lines in the file
+	 */
+	public List<String> readAllLines(Path path) {
+		var arrayList = new ArrayList<String>();
+		try (Stream<String> stream = Files.lines(path)) {
+			Iterator<String> iterator = stream.iterator();
+			while (iterator.hasNext()) {
+				String nextLine = iterator.next();
+				arrayList.add(nextLine);
+			}
+		} catch (IOException e) {
+			rootLogger.log(Level.ERROR, "Problem with file reading");
+		}
+		return arrayList;
+	}
+	
+	/**
 	 * Method to read specific number of correct lines or LESS if end of lines
 	 * 
 	 * @param numberOfCorrectLines number of correct lines to read from file
+	 * @param path to file
 	 * @return String[] with correct lines after validation
 	 * @throws ArrayNoSuchFileException
 	 */
@@ -73,7 +94,7 @@ public class ArrayReaderImpl implements ArrayReader {
 					break;
 				}
 				String nextLine = iterator.next();
-				if (lineValidator.validate(nextLine)) {
+				if (lineValidator.validateFromFile(nextLine)) {
 					arrayList.add(nextLine);
 					currentNumberOfCorrectLines++;
 				} else {
@@ -98,7 +119,7 @@ public class ArrayReaderImpl implements ArrayReader {
 			Iterator<String> iterator = stream.iterator();
 			while (iterator.hasNext()) {
 				String nextLine = iterator.next();
-				if (lineValidator.validate(nextLine)) {
+				if (lineValidator.validateFromFile(nextLine)) {
 					arrayList.add(nextLine);
 				} else {
 					rootLogger.log(Level.INFO, "Line: {} is not correct", nextLine);

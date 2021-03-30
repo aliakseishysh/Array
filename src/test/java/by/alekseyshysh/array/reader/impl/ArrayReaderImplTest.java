@@ -1,4 +1,4 @@
-package by.alekseyshysh.array.reader;
+package by.alekseyshysh.array.reader.impl;
 
 import java.nio.file.Path;
 
@@ -6,9 +6,10 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import by.alekseyshysh.array.exception.ArrayException;
+import by.alekseyshysh.array.reader.ArrayReader;
 import by.alekseyshysh.array.reader.impl.ArrayReaderImpl;
 
-public class ReadAllStringsTest {
+public class ArrayReaderImplTest {
 
 	private ArrayReader arrayRead = new ArrayReaderImpl();
 	

@@ -4,6 +4,8 @@ import java.util.stream.IntStream;
 
 import by.alekseyshysh.array.action.ArrayCalculation;
 import by.alekseyshysh.array.entity.IntArray;
+import by.alekseyshysh.array.exception.ArrayException;
+import by.alekseyshysh.array.validator.ArrayValidator;
 
 /**
  * 
@@ -14,14 +16,20 @@ import by.alekseyshysh.array.entity.IntArray;
  */
 public class ArrayCalculationActionImpl implements ArrayCalculation {
 	
-	public int calculateSumWithStream(IntArray intArray) {
+	public int calculateSumWithStream(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int sum = IntStream.of(elements)
 						   .sum();
 		return sum;
 	}
 	
-	public int calculateSum(IntArray intArray) {
+	public int calculateSum(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int resultSum = 0;
 		for (int element: elements) {
@@ -35,8 +43,12 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 	 * 
 	 * @param intArray
 	 * @return average arithmetic value (double) of intArray
+	 * @throws ArrayException 
 	 */
-	public double calculateAverageWithStream(IntArray intArray) {
+	public double calculateAverageWithStream(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		double elementsCount = (double) elements.length;
 		double resultSum = (double) calculateSumWithStream(intArray);
@@ -49,8 +61,12 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 	 * 
 	 * @param intArray
 	 * @return average arithmetic value of intArray
+	 * @throws ArrayException 
 	 */
-	public double calculateAverage(IntArray intArray) {
+	public double calculateAverage(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int elementsLength = elements.length;
 		double elementsSum = calculateSum(intArray);
@@ -58,7 +74,10 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 		return resultAverage;
 	}
 	
-	public int calculatePositiveElementsCountWithStream(IntArray intArray) {
+	public int calculatePositiveElementsCountWithStream(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int positiveElementsCount = (int) IntStream.of(elements)
 												   .filter(element -> element > 0)
@@ -67,7 +86,10 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 		
 	}
 	
-	public int calculatePositiveElementsCount(IntArray intArray) {
+	public int calculatePositiveElementsCount(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int positiveElementsCount = 0;
 		for (int element: elements) {
@@ -76,7 +98,10 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 		return positiveElementsCount;
 	}
 	
-	public int calculateNegativeElementsCountWithStream(IntArray intArray) {
+	public int calculateNegativeElementsCountWithStream(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int negativeElementsCount = (int) IntStream.of(elements)
 												   .filter(e -> e < 0)
@@ -84,7 +109,10 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 		return negativeElementsCount;
 	}
 	
-	public int calculateNegativeElementsCount(IntArray intArray) {
+	public int calculateNegativeElementsCount(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int negativeElementsCount = 0;
 		for (int element: elements) {

@@ -4,6 +4,8 @@ import java.util.stream.IntStream;
 
 import by.alekseyshysh.array.action.ArraySearch;
 import by.alekseyshysh.array.entity.IntArray;
+import by.alekseyshysh.array.exception.ArrayException;
+import by.alekseyshysh.array.validator.ArrayValidator;
 
 /**
  * This class for finding elements in an array
@@ -17,8 +19,12 @@ public class ArraySearchActionImpl implements ArraySearch {
 	 * 
 	 * @param intArray instance of IntArray class
 	 * @return maxElement maximum element of intArray.getElements()
+	 * @throws ArrayException 
 	 */
-	public int searchMaxElementWithStream(IntArray intArray) {
+	public int searchMaxElementWithStream(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int maxElement = IntStream.of(elements).max().getAsInt();
 		return maxElement;
@@ -29,8 +35,12 @@ public class ArraySearchActionImpl implements ArraySearch {
 	 * 
 	 * @param intArray instance of IntArray class
 	 * @return maxElement maximum element of intArray.getElements()
+	 * @throws ArrayException 
 	 */
-	public int searchMaxElement(IntArray intArray) {
+	public int searchMaxElement(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int maxElement = elements[0];
 		for (int element: elements) {
@@ -46,8 +56,12 @@ public class ArraySearchActionImpl implements ArraySearch {
 	 * 
 	 * @param intArray instance of IntArray class
 	 * @return minElement minimum element of intArray.getElements()
+	 * @throws ArrayException 
 	 */
-	public int searchMinElementWithStream(IntArray intArray) {
+	public int searchMinElementWithStream(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int minElement = IntStream.of(elements)
 								  .min()
@@ -60,8 +74,12 @@ public class ArraySearchActionImpl implements ArraySearch {
 	 * 
 	 * @param intArray instance of IntArray class
 	 * @return minElement minimum element of intArray.getElements()
+	 * @throws ArrayException 
 	 */
-	public int searchMinElement(IntArray intArray) {
+	public int searchMinElement(IntArray intArray) throws ArrayException {
+		if (ArrayValidator.validateIntArray(intArray)) {
+			throw new ArrayException("IntArray object or filed elements equals null");
+		}
 		int[] elements = intArray.getElements();
 		int minElement = elements[0];
 		for (int element: elements) {

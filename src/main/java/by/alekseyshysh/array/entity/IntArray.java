@@ -65,14 +65,6 @@ public class IntArray {
 		return Arrays.equals(elements, intArrayToCompare.elements);
 	}
 	
-	public List<Integer> toIntegerList() {
-		List<Integer> list = new ArrayList<>(elements.length);
-		for (int element: elements) {
-			list.add(Integer.valueOf(element));
-		}
-		return list;
-	}
-	
 	@Override
 	public String toString() {
 		var stringBuilder = new StringBuilder();
