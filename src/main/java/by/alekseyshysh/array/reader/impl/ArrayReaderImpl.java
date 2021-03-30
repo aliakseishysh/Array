@@ -21,7 +21,7 @@ import by.alekseyshysh.array.exception.ArrayException;
 import by.alekseyshysh.array.reader.ArrayReader;
 import by.alekseyshysh.array.validator.ArrayValidator;
 import by.alekseyshysh.array.validator.StringLineValidator;
-import by.alekseyshysh.array.validator.impl.StringLineValidatorImpl;
+import by.alekseyshysh.array.validator.StringLineValidator;
 
 /**
  * 
@@ -93,7 +93,7 @@ public class ArrayReaderImpl implements ArrayReader {
 	public String[] readCorrectLines(int numberOfCorrectLines, Path path) {
 		int currentNumberOfCorrectLines = 0;
 		List<String> arrayList = new ArrayList<>();
-		StringLineValidator lineValidator = new StringLineValidatorImpl();
+		StringLineValidator lineValidator = new StringLineValidator();
 		try (Stream<String> stream = Files.lines(path)) {
 			Iterator<String> iterator = stream.iterator();
 			while (currentNumberOfCorrectLines < numberOfCorrectLines) {
@@ -120,7 +120,7 @@ public class ArrayReaderImpl implements ArrayReader {
 	 * @throws ArrayNoSuchFileException
 	 */
 	public String[] readAllCorrectLines(Path path) {
-		StringLineValidator lineValidator = new StringLineValidatorImpl();
+		StringLineValidator lineValidator = new StringLineValidator();
 		List<String> arrayList = new ArrayList<>();
 		try (Stream<String> stream = Files.lines(path)) {
 			Iterator<String> iterator = stream.iterator();
