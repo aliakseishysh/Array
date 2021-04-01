@@ -1,21 +1,20 @@
-package by.alekseyshysh.array.action.impl;
+package by.alekseyshysh.array.service.impl;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import by.alekseyshysh.array.action.ArrayCalculation;
-import by.alekseyshysh.array.action.impl.ArrayCalculationActionImpl;
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
+import by.alekseyshysh.array.service.ArrayCalculation;
 
 /**
  * 
  * @author AlekseyShysh
  *
  */
-public class ArrayCalculationActionImplTest {
+public class ArrayCalculationServiceImplTest {
 
-	private ArrayCalculation arrayCalculation = new ArrayCalculationActionImpl();
+	private ArrayCalculation arrayCalculation = new ArrayCalculationServiceImpl();
 
 	@Test
 	public void calculateAveragePositiveValuesTest() throws ArrayException {

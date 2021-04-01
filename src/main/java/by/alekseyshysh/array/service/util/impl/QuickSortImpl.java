@@ -1,6 +1,6 @@
-package by.alekseyshysh.array.action.util.impl;
+package by.alekseyshysh.array.service.util.impl;
 
-import by.alekseyshysh.array.action.util.QuickSort;
+import by.alekseyshysh.array.service.util.QuickSort;
 
 public class QuickSortImpl implements QuickSort {
 

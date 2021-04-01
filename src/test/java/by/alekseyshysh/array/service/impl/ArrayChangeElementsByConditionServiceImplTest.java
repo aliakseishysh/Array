@@ -1,20 +1,18 @@
-package by.alekseyshysh.array.action.impl;
+package by.alekseyshysh.array.service.impl;
 
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import by.alekseyshysh.array.action.ArrayCalculation;
-import by.alekseyshysh.array.action.ArrayChangeElements;
-import by.alekseyshysh.array.action.impl.ArrayCalculationActionImpl;
-import by.alekseyshysh.array.action.impl.ArrayChangeElementsByConditionActionImpl;
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
+import by.alekseyshysh.array.service.ArrayCalculation;
+import by.alekseyshysh.array.service.ArrayChangeElements;
 
-public class ArrayChangeElementsByConditionActionImplTest {
+public class ArrayChangeElementsByConditionServiceImplTest {
 
-	private ArrayChangeElements changeElements = new ArrayChangeElementsByConditionActionImpl();
-	private ArrayCalculation arrayCalculation = new ArrayCalculationActionImpl();
+	private ArrayChangeElements changeElements = new ArrayChangeElementsByConditionServiceImpl();
+	private ArrayCalculation arrayCalculation = new ArrayCalculationServiceImpl();
 
 	@Test
 	public void changeAllGreaterThenZeroTest() throws ArrayException {

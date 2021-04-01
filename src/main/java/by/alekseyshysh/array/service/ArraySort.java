@@ -1,4 +1,4 @@
-package by.alekseyshysh.array.action;
+package by.alekseyshysh.array.service;
 
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;

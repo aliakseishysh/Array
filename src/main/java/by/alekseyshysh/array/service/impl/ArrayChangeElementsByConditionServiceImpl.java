@@ -1,19 +1,18 @@
-package by.alekseyshysh.array.action.impl;
+package by.alekseyshysh.array.service.impl;
 
 import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
-import by.alekseyshysh.array.action.ArrayChangeElements;
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
-import by.alekseyshysh.array.validator.ArrayValidator;
+import by.alekseyshysh.array.service.ArrayChangeElements;
 
 /**
  * 
  * @author AlekseyShysh
  *
  */
-public class ArrayChangeElementsByConditionActionImpl implements ArrayChangeElements {
+public class ArrayChangeElementsByConditionServiceImpl implements ArrayChangeElements {
 
 	private static ArrayCheck arrayCheck = new ArrayCheck();
 	

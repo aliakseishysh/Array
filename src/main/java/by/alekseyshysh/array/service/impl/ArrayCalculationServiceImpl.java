@@ -1,11 +1,10 @@
-package by.alekseyshysh.array.action.impl;
+package by.alekseyshysh.array.service.impl;
 
 import java.util.stream.IntStream;
 
-import by.alekseyshysh.array.action.ArrayCalculation;
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
-import by.alekseyshysh.array.validator.ArrayValidator;
+import by.alekseyshysh.array.service.ArrayCalculation;
 
 /**
  * 
@@ -15,7 +14,7 @@ import by.alekseyshysh.array.validator.ArrayValidator;
  * @author AlekseyShysh
  *
  */
-public class ArrayCalculationActionImpl implements ArrayCalculation {
+public class ArrayCalculationServiceImpl implements ArrayCalculation {
 	
 	private static ArrayCheck arrayCheck = new ArrayCheck();
 
@@ -39,7 +38,6 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 	}
 
 	/**
-	 * elementsCount > 1, because of validation in LineValidator
 	 * 
 	 * @param intArray
 	 * @return average arithmetic value (double) of intArray
@@ -56,7 +54,6 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 	}
 
 	/**
-	 * elementsCount > 1, because of validation in LineValidator
 	 * 
 	 * @param intArray
 	 * @return average arithmetic value of intArray

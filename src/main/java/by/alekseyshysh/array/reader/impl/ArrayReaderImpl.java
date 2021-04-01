@@ -29,20 +29,19 @@ import by.alekseyshysh.array.validator.ArrayValidator;
 public class ArrayReaderImpl implements ArrayReader {
 
 	private static Logger rootLogger = LogManager.getLogger();
-	private static final String FILE_READING_PROBLEM_DESCRIPTION = "Problem with file reading";
 	
 	private void checkFileExistence(Path path) throws ArrayException {
 		if (!ArrayValidator.validateFileExistence(path)) {
-			throw new ArrayException("file not exists");
+			throw new ArrayException("File by path: \'" + path.toString() +  "\'is not exist");
 		}
 	}
 
-	public Path createFilePathFromRelative(String relativeFilePath) throws ArrayException {
+	public Path createPathFromRelative(String relativeFilePath) throws ArrayException {
 		URI uri;
 		try {
 			uri = getClass().getResource(relativeFilePath).toURI();
 		} catch (NullPointerException e) {
-			throw new ArrayException("name of the desired resource is null");
+			throw new ArrayException("Name of the desired resource is null");
 		} catch (URISyntaxException e) {
 			throw new ArrayException(
 					"URL is not formatted strictly according toRFC2396 and cannot be converted to a URI");
@@ -58,14 +57,14 @@ public class ArrayReaderImpl implements ArrayReader {
 		return path;
 	}
 
-	public Path createFilePathFromAbsolute(String absoluteFilePath) throws ArrayException {
+	public Path createPathFromAbsolute(String absoluteFilePath) throws ArrayException {
 		Path path = Paths.get(absoluteFilePath);
 		checkFileExistence(path);
 		return path;
 	}
 
 	/**
-	 * Method to read all lines in the file without validation
+	 * Method to read all lines in the file WITHOUT ANY VALIDATION
 	 * 
 	 * @param path to file
 	 * @return String[] with all lines in the file
@@ -79,13 +78,18 @@ public class ArrayReaderImpl implements ArrayReader {
 				arrayList.add(nextLine);
 			}
 		} catch (IOException e) {
-			rootLogger.log(Level.ERROR, FILE_READING_PROBLEM_DESCRIPTION);
+			rootLogger.log(Level.ERROR, "Problem with file reading by path: \'{}\' occured", path);
 		}
 		return arrayList;
 	}
 
 	/**
 	 * Method to read specific number of correct lines or LESS if end of lines
+	 * Correct lines are selected by using regular expression in validation
+	 * But values in file can be not only int, but ALL INTEGRAL VALUES
+	 * So, while parsing we need to check for NumberFormatException
+	 * Or use {@link #readAllLines(Path)} method.
+	 * You can use methods of this class, or build Path by yourself 
 	 * 
 	 * @param numberOfCorrectLines number of correct lines to read from file
 	 * @param path                 to file
@@ -110,7 +114,7 @@ public class ArrayReaderImpl implements ArrayReader {
 				}
 			}
 		} catch (IOException e) {
-			rootLogger.log(Level.ERROR, FILE_READING_PROBLEM_DESCRIPTION);
+			rootLogger.log(Level.ERROR, "Problem with file reading by path: \'{}\' occured", path);
 		}
 		return arrayList.toArray(new String[arrayList.size()]);
 	}
@@ -134,7 +138,7 @@ public class ArrayReaderImpl implements ArrayReader {
 				}
 			}
 		} catch (IOException e) {
-			rootLogger.log(Level.ERROR, FILE_READING_PROBLEM_DESCRIPTION);
+			rootLogger.log(Level.ERROR, "Problem with file reading by path: \'{}\' occured", path);
 		}
 		return arrayList.toArray(new String[arrayList.size()]);
 	}

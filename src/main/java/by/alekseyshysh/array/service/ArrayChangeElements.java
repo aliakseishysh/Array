@@ -1,4 +1,4 @@
-package by.alekseyshysh.array.action;
+package by.alekseyshysh.array.service;
 
 import java.util.function.IntPredicate;
 

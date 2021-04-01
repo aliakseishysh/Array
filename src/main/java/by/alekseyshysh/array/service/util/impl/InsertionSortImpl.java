@@ -1,6 +1,6 @@
-package by.alekseyshysh.array.action.util.impl;
+package by.alekseyshysh.array.service.util.impl;
 
-import by.alekseyshysh.array.action.util.InsertionSort;
+import by.alekseyshysh.array.service.util.InsertionSort;
 
 public class InsertionSortImpl implements InsertionSort {
 

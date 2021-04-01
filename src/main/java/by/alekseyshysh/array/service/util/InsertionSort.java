@@ -1,4 +1,4 @@
-package by.alekseyshysh.array.action.util;
+package by.alekseyshysh.array.service.util;
 
 public interface InsertionSort {
 

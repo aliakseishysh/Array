@@ -1,4 +1,4 @@
-package by.alekseyshysh.array.action.impl;
+package by.alekseyshysh.array.service.impl;
 
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
@@ -17,7 +17,7 @@ class ArrayCheck {
 	
 	void checkElementsZero(int[] elements) throws ArrayException {
 		if (ArrayValidator.validateElementsLenghtNotZero(elements)) {
-			throw new ArrayException("length of field elements equals 0");
+			throw new ArrayException("Length of field elements equals 0");
 		}
 	}
 }

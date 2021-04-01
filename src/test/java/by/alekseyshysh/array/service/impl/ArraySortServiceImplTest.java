@@ -1,16 +1,15 @@
-package by.alekseyshysh.array.action.impl;
+package by.alekseyshysh.array.service.impl;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import by.alekseyshysh.array.action.ArraySort;
-import by.alekseyshysh.array.action.impl.ArraySortActionImpl;
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
+import by.alekseyshysh.array.service.ArraySort;
 
-public class ArraySortActionImplTest {
+public class ArraySortServiceImplTest {
 
-	private ArraySort arraySort = new ArraySortActionImpl();
+	private ArraySort arraySort = new ArraySortServiceImpl();
 
 	@Test
 	public void insertionSortImperativePositiveValuesTest() throws ArrayException {

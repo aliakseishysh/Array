@@ -14,22 +14,20 @@ import by.alekseyshysh.array.parser.ArrayFileParser;
 public class ArrayFileParserImpl implements ArrayFileParser {
 
 	private static Logger rootLogger = LogManager.getLogger();
-	private static final String INT_PARSE_DESCRIPTION = "Can't parse string to int";
+	private static final String SPLITTER = ",";
 	
 	/**
 	 * Converting String[] to ArrayList<int[]>
 	 * 
-	 * @param correctLines lines received after validation
-	 * @return ArrayList<int[]> object
 	 */
-	public List<int[]> parseStringsFromFileWithStream(String[] correctLines) {
+	public List<int[]> parseStringsWithStream(List<String> lines) {
 		var resultList = new ArrayList<int[]>();
-		for (String correctLine : correctLines) {
+		for (String line : lines) {
 			try {
-				int[] resultArray = Arrays.stream(correctLine.split(",")).mapToInt(Integer::parseInt).toArray();
+				int[] resultArray = Arrays.stream(line.split(SPLITTER)).mapToInt(Integer::parseInt).toArray();
 				resultList.add(resultArray);
 			} catch (NumberFormatException  nfe) {
-				rootLogger.log(Level.ERROR, INT_PARSE_DESCRIPTION);
+				rootLogger.log(Level.ERROR, "Can not parse string \'{}\' to int", line);
 			}
 		}
 		return resultList;
@@ -38,13 +36,11 @@ public class ArrayFileParserImpl implements ArrayFileParser {
 	/**
 	 * Converting String[] to ArrayList<int[]>
 	 * 
-	 * @param correctLines lines received after validation
-	 * @return ArrayList<int[]> object
 	 */
-	public List<int[]> parseStringsFromFile(String[] correctLines) {
+	public List<int[]> parseStrings(List<String> lines) {
 		var resultList = new ArrayList<int[]>();
-		for (String correctLine : correctLines) {
-			String[] stringParseResult = correctLine.split(",");
+		for (String line : lines) {
+			String[] stringParseResult = line.split(SPLITTER);
 			int[] resultArray = new int[stringParseResult.length];
 			try {
 				for (int j = 0; j < stringParseResult.length; j++) {
@@ -53,18 +49,18 @@ public class ArrayFileParserImpl implements ArrayFileParser {
 				}
 				resultList.add(resultArray);
 			} catch (NumberFormatException nfe) {
-				rootLogger.log(Level.ERROR, INT_PARSE_DESCRIPTION);
+				rootLogger.log(Level.ERROR, "Can not parse string \'{}\' to int", line);
 			}
 		}
 		return resultList;
 	}
 
-	public int[] parseStringFromFileWithStream(String line) throws ArrayException {
+	public int[] parseStringWithStream(String line) throws ArrayException {
 		int[] resultArray;
 		try {
-			resultArray = Arrays.stream(line.split(",")).mapToInt(Integer::parseInt).toArray();
+			resultArray = Arrays.stream(line.split(SPLITTER)).mapToInt(Integer::parseInt).toArray();
 		} catch (NumberFormatException nfe) {
-			throw new ArrayException(INT_PARSE_DESCRIPTION);
+			throw new ArrayException("Can not parse string \'" + line + "\' to int");
 		}
 		return resultArray;
 	}

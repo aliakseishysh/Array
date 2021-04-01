@@ -1,11 +1,10 @@
-package by.alekseyshysh.array.action.impl;
+package by.alekseyshysh.array.service.impl;
 
 import java.util.stream.IntStream;
 
-import by.alekseyshysh.array.action.ArraySearch;
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
-import by.alekseyshysh.array.validator.ArrayValidator;
+import by.alekseyshysh.array.service.ArraySearch;
 
 /**
  * This class for finding elements in an array
@@ -13,7 +12,7 @@ import by.alekseyshysh.array.validator.ArrayValidator;
  * @author AlekseyShysh
  * 
  */
-public class ArraySearchActionImpl implements ArraySearch {
+public class ArraySearchServiceImpl implements ArraySearch {
 
 	private static ArrayCheck arrayCheck = new ArrayCheck();
 	

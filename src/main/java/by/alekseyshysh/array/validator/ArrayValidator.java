@@ -4,13 +4,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.regex.Pattern;
 
-import org.apache.logging.log4j.Level;
-
 import by.alekseyshysh.array.entity.IntArray;
 
 public class ArrayValidator {
 	
-	private static final String ALL_INTEGER_NUMBERS = "^-?\\d(,-?\\d)*$";
+	private static final String ALL_INTEGRAL_NUMBERS = "^-?\\d(,-?\\d)*$";
 	
 	private ArrayValidator() {
 	}
@@ -18,10 +16,10 @@ public class ArrayValidator {
 	/**
 	 * 
 	 * @param custom string line
-	 * @return boolean value that shows, can we parse it to primary integral types
+	 * @return boolean value that shows, can we parse line to primary integral types or not
 	 */
 	public static boolean validateString(String line) {
-		boolean result = Pattern.matches(ALL_INTEGER_NUMBERS, line);
+		boolean result = Pattern.matches(ALL_INTEGRAL_NUMBERS, line);
 		return result;
 	}
 	

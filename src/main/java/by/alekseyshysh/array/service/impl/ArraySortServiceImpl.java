@@ -1,19 +1,18 @@
-package by.alekseyshysh.array.action.impl;
+package by.alekseyshysh.array.service.impl;
 
 import java.util.stream.IntStream;
 
-import by.alekseyshysh.array.action.ArraySort;
-import by.alekseyshysh.array.action.util.InsertionSort;
-import by.alekseyshysh.array.action.util.QuickSort;
-import by.alekseyshysh.array.action.util.ShellSort;
-import by.alekseyshysh.array.action.util.impl.InsertionSortImpl;
-import by.alekseyshysh.array.action.util.impl.QuickSortImpl;
-import by.alekseyshysh.array.action.util.impl.ShellSortImpl;
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
-import by.alekseyshysh.array.validator.ArrayValidator;
+import by.alekseyshysh.array.service.ArraySort;
+import by.alekseyshysh.array.service.util.InsertionSort;
+import by.alekseyshysh.array.service.util.QuickSort;
+import by.alekseyshysh.array.service.util.ShellSort;
+import by.alekseyshysh.array.service.util.impl.InsertionSortImpl;
+import by.alekseyshysh.array.service.util.impl.QuickSortImpl;
+import by.alekseyshysh.array.service.util.impl.ShellSortImpl;
 
-public class ArraySortActionImpl implements ArraySort {
+public class ArraySortServiceImpl implements ArraySort {
 
 	private static ArrayCheck arrayCheck = new ArrayCheck();
 	

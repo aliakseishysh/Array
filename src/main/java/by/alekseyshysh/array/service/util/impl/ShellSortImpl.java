@@ -1,13 +1,13 @@
-package by.alekseyshysh.array.action.util.impl;
+package by.alekseyshysh.array.service.util.impl;
 
-import by.alekseyshysh.array.action.util.ShellSort;
+import by.alekseyshysh.array.service.util.ShellSort;
 
 public class ShellSortImpl implements ShellSort {
 
-	public int[] shellSort(int arrayToSort[]) {
-		int n = arrayToSort.length;
-		for (int gap = n / 2; gap > 0; gap /= 2) {
-			for (int i = gap; i < n; i++) {
+	public int[] shellSort(int[] arrayToSort) {
+		int length = arrayToSort.length;
+		for (int gap = length / 2; gap > 0; gap /= 2) {
+			for (int i = gap; i < length; i++) {
 				int key = arrayToSort[i];
 				int j = i;
 				while (j >= gap && arrayToSort[j - gap] > key) {

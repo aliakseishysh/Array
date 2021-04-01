@@ -1,16 +1,15 @@
-package by.alekseyshysh.array.action.impl;
+package by.alekseyshysh.array.service.impl;
 
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import by.alekseyshysh.array.action.ArraySearch;
-import by.alekseyshysh.array.action.impl.ArraySearchActionImpl;
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
+import by.alekseyshysh.array.service.ArraySearch;
 
-public class ArraySearchActionImplTest {
+public class ArraySearchServiceImplTest {
 
-	private ArraySearch arraySearch = new ArraySearchActionImpl();
+	private ArraySearch arraySearch = new ArraySearchServiceImpl();
 
 	@Test
 	public void searchMaxElementPositiveValuesTest() throws ArrayException {
