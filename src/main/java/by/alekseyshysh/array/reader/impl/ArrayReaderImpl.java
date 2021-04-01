@@ -20,8 +20,6 @@ import org.apache.logging.log4j.Logger;
 import by.alekseyshysh.array.exception.ArrayException;
 import by.alekseyshysh.array.reader.ArrayReader;
 import by.alekseyshysh.array.validator.ArrayValidator;
-import by.alekseyshysh.array.validator.StringLineValidator;
-import by.alekseyshysh.array.validator.StringLineValidator;
 
 /**
  * 
@@ -31,6 +29,13 @@ import by.alekseyshysh.array.validator.StringLineValidator;
 public class ArrayReaderImpl implements ArrayReader {
 
 	private static Logger rootLogger = LogManager.getLogger();
+	private static final String FILE_READING_PROBLEM_DESCRIPTION = "Problem with file reading";
+	
+	private void checkFileExistence(Path path) throws ArrayException {
+		if (!ArrayValidator.validateFileExistence(path)) {
+			throw new ArrayException("file not exists");
+		}
+	}
 
 	public Path createFilePathFromRelative(String relativeFilePath) throws ArrayException {
 		URI uri;
@@ -49,17 +54,13 @@ public class ArrayReaderImpl implements ArrayReader {
 		} catch (InvalidPathException ipe) {
 			throw new ArrayException("path string cannot be converted to a Path");
 		}
-		if (!ArrayValidator.validateFileExistance(path)) {
-			throw new ArrayException("file not exists");
-		}
+		checkFileExistence(path);
 		return path;
 	}
 
 	public Path createFilePathFromAbsolute(String absoluteFilePath) throws ArrayException {
 		Path path = Paths.get(absoluteFilePath);
-		if (!ArrayValidator.validateFileExistance(path)) {
-			throw new ArrayException("file not exists");
-		}
+		checkFileExistence(path);
 		return path;
 	}
 
@@ -78,7 +79,7 @@ public class ArrayReaderImpl implements ArrayReader {
 				arrayList.add(nextLine);
 			}
 		} catch (IOException e) {
-			rootLogger.log(Level.ERROR, "Problem with file reading");
+			rootLogger.log(Level.ERROR, FILE_READING_PROBLEM_DESCRIPTION);
 		}
 		return arrayList;
 	}
@@ -94,7 +95,6 @@ public class ArrayReaderImpl implements ArrayReader {
 	public String[] readCorrectLines(int numberOfCorrectLines, Path path) {
 		int currentNumberOfCorrectLines = 0;
 		List<String> arrayList = new ArrayList<>();
-		StringLineValidator lineValidator = new StringLineValidator();
 		try (Stream<String> stream = Files.lines(path)) {
 			Iterator<String> iterator = stream.iterator();
 			while (currentNumberOfCorrectLines < numberOfCorrectLines) {
@@ -102,7 +102,7 @@ public class ArrayReaderImpl implements ArrayReader {
 					break;
 				}
 				String nextLine = iterator.next();
-				if (lineValidator.validateFromFile(nextLine)) {
+				if (ArrayValidator.validateString(nextLine)) {
 					arrayList.add(nextLine);
 					currentNumberOfCorrectLines++;
 				} else {
@@ -110,7 +110,7 @@ public class ArrayReaderImpl implements ArrayReader {
 				}
 			}
 		} catch (IOException e) {
-			rootLogger.log(Level.ERROR, "Problem with file reading");
+			rootLogger.log(Level.ERROR, FILE_READING_PROBLEM_DESCRIPTION);
 		}
 		return arrayList.toArray(new String[arrayList.size()]);
 	}
@@ -122,20 +122,19 @@ public class ArrayReaderImpl implements ArrayReader {
 	 * @throws ArrayNoSuchFileException
 	 */
 	public String[] readAllCorrectLines(Path path) {
-		StringLineValidator lineValidator = new StringLineValidator();
 		List<String> arrayList = new ArrayList<>();
 		try (Stream<String> stream = Files.lines(path)) {
 			Iterator<String> iterator = stream.iterator();
 			while (iterator.hasNext()) {
 				String nextLine = iterator.next();
-				if (lineValidator.validateFromFile(nextLine)) {
+				if (ArrayValidator.validateString(nextLine)) {
 					arrayList.add(nextLine);
 				} else {
 					rootLogger.log(Level.INFO, "Line: {} is not correct", nextLine);
 				}
 			}
 		} catch (IOException e) {
-			rootLogger.log(Level.ERROR, "Problem with file reading");
+			rootLogger.log(Level.ERROR, FILE_READING_PROBLEM_DESCRIPTION);
 		}
 		return arrayList.toArray(new String[arrayList.size()]);
 	}

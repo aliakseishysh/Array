@@ -17,20 +17,20 @@ import by.alekseyshysh.array.validator.ArrayValidator;
  */
 public class ArrayCalculationActionImpl implements ArrayCalculation {
 	
+	private static ArrayCheck arrayCheck = new ArrayCheck();
+
 	public int calculateSumWithStream(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int sum = IntStream.of(elements).sum();
 		return sum;
 	}
 
 	public int calculateSum(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int resultSum = 0;
 		for (int element : elements) {
 			resultSum += element;
@@ -46,10 +46,9 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 	 * @throws ArrayException
 	 */
 	public double calculateAverageWithStream(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		double elementsCount = (double) elements.length;
 		double resultSum = (double) calculateSumWithStream(intArray);
 		double averageValue = resultSum / elementsCount;
@@ -64,10 +63,9 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 	 * @throws ArrayException
 	 */
 	public double calculateAverage(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int elementsLength = elements.length;
 		double elementsSum = calculateSum(intArray);
 		double resultAverage = elementsSum / elementsLength;
@@ -75,20 +73,18 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 	}
 
 	public int calculatePositiveElementsCountWithStream(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int positiveElementsCount = (int) IntStream.of(elements).filter(element -> element > 0).count();
 		return positiveElementsCount;
 
 	}
 
 	public int calculatePositiveElementsCount(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int positiveElementsCount = 0;
 		for (int element : elements) {
 			positiveElementsCount += element > 0 ? 1 : 0;
@@ -97,19 +93,17 @@ public class ArrayCalculationActionImpl implements ArrayCalculation {
 	}
 
 	public int calculateNegativeElementsCountWithStream(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int negativeElementsCount = (int) IntStream.of(elements).filter(e -> e < 0).count();
 		return negativeElementsCount;
 	}
 
 	public int calculateNegativeElementsCount(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int negativeElementsCount = 0;
 		for (int element : elements) {
 			negativeElementsCount += element > 0 ? 1 : 0;

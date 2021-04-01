@@ -15,6 +15,8 @@ import by.alekseyshysh.array.validator.ArrayValidator;
  */
 public class ArraySearchActionImpl implements ArraySearch {
 
+	private static ArrayCheck arrayCheck = new ArrayCheck();
+	
 	/**
 	 * Returns a maximum element of intArray with IntStream implementation
 	 * 
@@ -23,10 +25,9 @@ public class ArraySearchActionImpl implements ArraySearch {
 	 * @throws ArrayException
 	 */
 	public int searchMaxElementWithStream(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int maxElement = IntStream.of(elements).max().getAsInt();
 		return maxElement;
 	}
@@ -39,10 +40,9 @@ public class ArraySearchActionImpl implements ArraySearch {
 	 * @throws ArrayException
 	 */
 	public int searchMaxElement(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int maxElement = elements[0];
 		for (int element : elements) {
 			if (element > maxElement) {
@@ -60,10 +60,9 @@ public class ArraySearchActionImpl implements ArraySearch {
 	 * @throws ArrayException
 	 */
 	public int searchMinElementWithStream(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int minElement = IntStream.of(elements).min().getAsInt();
 		return minElement;
 	}
@@ -76,10 +75,9 @@ public class ArraySearchActionImpl implements ArraySearch {
 	 * @throws ArrayException
 	 */
 	public int searchMinElement(IntArray intArray) throws ArrayException {
-		if (ArrayValidator.validateIntArray(intArray)) {
-			throw new ArrayException(NULL_EXCEPTION_DESCRIPTION);
-		}
+		arrayCheck.checkNull(intArray);
 		int[] elements = intArray.getElements();
+		arrayCheck.checkElementsZero(elements);
 		int minElement = elements[0];
 		for (int element : elements) {
 			if (element < minElement) {

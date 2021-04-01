@@ -2,9 +2,8 @@ package by.alekseyshysh.array.action;
 
 import by.alekseyshysh.array.entity.IntArray;
 import by.alekseyshysh.array.exception.ArrayException;
-import by.alekseyshysh.array.utils.Constant;
 
-public interface ArrayCalculation extends Constant {
+public interface ArrayCalculation {
 
 	public int calculateSumWithStream(IntArray intArray) throws ArrayException;
 

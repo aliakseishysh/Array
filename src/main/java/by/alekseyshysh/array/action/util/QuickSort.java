@@ -1,4 +1,4 @@
-package by.alekseyshysh.array.utils;
+package by.alekseyshysh.array.action.util;
 
 public interface QuickSort {
 
