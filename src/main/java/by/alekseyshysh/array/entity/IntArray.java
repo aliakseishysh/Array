@@ -47,7 +47,7 @@ public class IntArray {
 		if (object == this) {
 			return true;
 		}
-		if (!(object instanceof IntArray)) {
+		if (object == null || getClass() != object.getClass()) {
 			return false;
 		}
 		var intArrayToCompare = (IntArray) object;
